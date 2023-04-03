@@ -37,7 +37,7 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println();
     }
 
-    //Header 모든 정보
+    //Header 모든 정보 "Cache-Control: max-age=0" 의 헤더는 조회가 되지 않는다 ???
     private void printHeaders(HttpServletRequest request) {
         System.out.println("--- Headers - start ---");
   /*
@@ -64,8 +64,8 @@ public class RequestHeaderServlet extends HttpServlet {
     private void printHeaderUtils(HttpServletRequest request) {
         System.out.println("--- Header 편의 조회 start ---");
         System.out.println("[Host 편의 조회]");
-        System.out.println("request.getServerName() = " + request.getServerName()); //Host 헤더
-        System.out.println("request.getServerPort() = " +request.getServerPort()); //Host 헤더
+        System.out.println("request.getServerName() = " + request.getServerName()); //Host 헤더 : localhost
+        System.out.println("request.getServerPort() = " +request.getServerPort()); //Host 헤더 : 8080
         System.out.println();
 
 
@@ -84,7 +84,6 @@ public class RequestHeaderServlet extends HttpServlet {
         }
         System.out.println();
 
-
         System.out.println("[Content 편의 조회]");
         System.out.println("request.getContentType() = " +
                 request.getContentType());
@@ -98,7 +97,10 @@ public class RequestHeaderServlet extends HttpServlet {
     }
 
     //기타정보
-    private void printEtc(HttpServletRequest request) { System.out.println("--- 기타 조회 start ---");
+    private void printEtc(HttpServletRequest request) {
+
+        System.out.println("--- 기타 조회 start ---");
+
         System.out.println("[Remote 정보]");
         System.out.println("request.getRemoteHost() = " + request.getRemoteHost()); //
         System.out.println("request.getRemoteAddr() = " + request.getRemoteAddr()); //
@@ -108,6 +110,7 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.getLocalName() = " + request.getLocalName()); //
         System.out.println("request.getLocalAddr() = " + request.getLocalAddr()); //
         System.out.println("request.getLocalPort() = " + request.getLocalPort()); //
+
         System.out.println("--- 기타 조회 end ---");
         System.out.println();
     }
