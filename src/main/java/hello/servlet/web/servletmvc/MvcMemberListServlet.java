@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name="mvcMemberListServlet", urlPatterns = "/servlet-mvc/members/")
+@WebServlet(name="mvcMemberListServlet", urlPatterns = "/servlet-mvc/members")
 public class MvcMemberListServlet extends HttpServlet {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
@@ -20,11 +20,11 @@ public class MvcMemberListServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Member> members = memberRepository.finaAll();
+        List<Member> members = memberRepository.findAll();
 
         request.setAttribute("members", members);
 
-        String viewPath = "/WEB-INF/views/member.jsp";
+        String viewPath = "/WEB-INF/views/members.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
     }
